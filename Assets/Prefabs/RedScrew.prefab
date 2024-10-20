@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6989325670076177515}
   - component: {fileID: 7408701931714464554}
   - component: {fileID: 9143836734034833187}
+  - component: {fileID: 8220061966556999156}
   m_Layer: 0
   m_Name: RedScrew
   m_TagString: Untagged
@@ -107,3 +108,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8220061966556999156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5714883083118298371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eff27c75e20fd240be709dc502c31f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screwHoldPlace: {fileID: 8386589098385007970, guid: 4f9c61e4381d3204ca222188eac34fac, type: 3}
+  holdPositions:
+  - {fileID: 8529748647834212340, guid: 8fdf1c6c76fcd044d9ccf940b188dba6, type: 3}
+  - {fileID: 3461638539607971509, guid: f4adee843e6133a4eba6fc130ead3052, type: 3}
+  - {fileID: 8276946469494724327, guid: 7d9c4c035d85e0e44b258304bf01f9f2, type: 3}
+  - {fileID: 8611689521059297921, guid: 4714c97927db23044bc424b50c6e88b9, type: 3}
