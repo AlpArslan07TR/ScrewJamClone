@@ -1676,8 +1676,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5794d6d839acf6b4f9e3875c30dd93c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screwsInHoldPlace:
-  - {fileID: 1006036476}
+  screwsInHoldPlace: []
+  holdPlace: {fileID: 1006036476}
 --- !u!1 &1859542353
 GameObject:
   m_ObjectHideFlags: 0
