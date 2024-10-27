@@ -49,6 +49,7 @@ public class MatchChecker : MonoBehaviour
                 // Sadece vidalarý yok et
                 foreach (var screw in group.Value)
                 {
+                    screw.DOScale(Vector3.zero, 0.5f).Kill();
                     screw.DOScale(Vector3.zero, 0.5f).OnComplete(() =>
                     {
                         Destroy(screw.gameObject); 
@@ -63,5 +64,66 @@ public class MatchChecker : MonoBehaviour
         
         screwsInHoldPlace.Clear();
         screwsInHoldPlace.AddRange(currentScrews);
+    }
+
+    public void CheckAndSwapLastScrew()
+    {
+        if (screwsInHoldPlace.Count < 3) return;
+
+        Transform lastScrew = screwsInHoldPlace[screwsInHoldPlace.Count - 1];
+        string lastScrewTag = lastScrew.tag;
+
+        
+        if (screwsInHoldPlace[screwsInHoldPlace.Count - 2].tag == lastScrewTag &&
+            screwsInHoldPlace[screwsInHoldPlace.Count - 3].tag == lastScrewTag)
+        {
+            return;
+        }
+
+        
+        for (int i = 0; i < screwsInHoldPlace.Count - 2; i++)
+        {
+            if (screwsInHoldPlace[i].tag == lastScrewTag &&
+                screwsInHoldPlace[i + 1].tag != lastScrewTag)
+            {
+                
+                Transform differentColorScrew = screwsInHoldPlace[i + 1];
+                Vector3 lastScrewPos = lastScrew.position;
+                Vector3 differentScrewPos = differentColorScrew.position;
+
+                lastScrew.DOMove(differentScrewPos, 0.5f);
+                differentColorScrew.DOMove(lastScrewPos, 0.5f);
+
+                
+                screwsInHoldPlace[i + 1] = lastScrew;
+                screwsInHoldPlace[screwsInHoldPlace.Count - 1] = differentColorScrew;
+
+                return;
+            }
+        }
+    }
+
+    private void ShiftScrewsToFillGaps()
+    {
+        int targetIndex = 0; 
+
+        
+        foreach (Transform screw in screwsInHoldPlace)
+        {
+            if (screw != null)
+            {
+                
+                Transform targetPosition = screwsInHoldPlace[0].parent.GetChild(targetIndex);
+                if (screw.position != targetPosition.position)
+                {
+                    screw.DOKill();
+                    screw.DOMove(targetPosition.position, 0.5f);
+                }
+                targetIndex++; 
+            }
+        }
+
+        
+        screwsInHoldPlace.RemoveAll(screw => screw == null); 
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
-using DG.Tweening; 
+using DG.Tweening;
+
 
 public class ScrewMovement : MonoBehaviour
 {
@@ -34,18 +35,18 @@ public class ScrewMovement : MonoBehaviour
 
         foreach (Transform holdPosition in holdPositions)
         {
-            if (holdPosition.childCount == 0) 
+            if (holdPosition.childCount == 0)
             {
-                
+                selectedScrew.SetParent(holdPosition);
                 selectedScrew.DOMove(holdPosition.position, 1f).OnComplete(() =>
                 {
-                    
-                    selectedScrew.SetParent(holdPosition); 
                     matchChecker.screwsInHoldPlace.Add(selectedScrew);
-                    matchChecker.CheckForMatch(); 
+                    matchChecker.CheckAndSwapLastScrew(); // Vida yer deðiþimi kontrolü
+                    matchChecker.CheckForMatch(); // Eþleþme kontrolü
                 });
                 return;
             }
         }
     }
+
 }
