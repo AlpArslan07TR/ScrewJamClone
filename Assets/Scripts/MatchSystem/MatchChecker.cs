@@ -46,7 +46,7 @@ public class MatchChecker : MonoBehaviour
             Debug.Log($"Grup: {group.Key}, Vida Sayýsý: {group.Value.Count}"); 
             if (group.Value.Count >= 3) 
             {
-                // Sadece vidalarý yok et
+                
                 foreach (var screw in group.Value)
                 {
                     screw.DOScale(Vector3.zero, 0.5f).Kill();
@@ -73,7 +73,7 @@ public class MatchChecker : MonoBehaviour
         Transform lastScrew = screwsInHoldPlace[screwsInHoldPlace.Count - 1];
         string lastScrewTag = lastScrew.tag;
 
-        
+        lastScrew.DOKill();
         if (screwsInHoldPlace[screwsInHoldPlace.Count - 2].tag == lastScrewTag &&
             screwsInHoldPlace[screwsInHoldPlace.Count - 3].tag == lastScrewTag)
         {
@@ -81,6 +81,7 @@ public class MatchChecker : MonoBehaviour
         }
 
         
+
         for (int i = 0; i < screwsInHoldPlace.Count - 2; i++)
         {
             if (screwsInHoldPlace[i].tag == lastScrewTag &&
@@ -88,6 +89,8 @@ public class MatchChecker : MonoBehaviour
             {
                 
                 Transform differentColorScrew = screwsInHoldPlace[i + 1];
+
+                differentColorScrew.DOKill();
                 Vector3 lastScrewPos = lastScrew.position;
                 Vector3 differentScrewPos = differentColorScrew.position;
 
