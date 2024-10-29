@@ -56,7 +56,7 @@ public class MatchChecker : MonoBehaviour
                     });
                 }
 
-                
+                ScoreManager.Instance.AddScore(10);
                 return; 
             }
         }
