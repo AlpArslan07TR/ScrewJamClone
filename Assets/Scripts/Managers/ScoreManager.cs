@@ -3,14 +3,14 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager Instance { get; private set; } // Singleton eriþim noktasý
+    public static ScoreManager Instance { get; private set; } 
 
     private int score = 0;
-    [SerializeField] private TextMeshProUGUI scoreText; // TMP referansý
+    [SerializeField] private TextMeshProUGUI scoreText; 
 
     private void Awake()
     {
-        // Singleton örneði oluþturulmasý
+        
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Sahne geçiþlerinde yok olmamasý için
+            DontDestroyOnLoad(gameObject); 
         }
     }
 
