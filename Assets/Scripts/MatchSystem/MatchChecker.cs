@@ -5,9 +5,10 @@ using DG.Tweening;
 public class MatchChecker : MonoBehaviour
 {
     public List<Transform> screwsInHoldPlace = new List<Transform>(); 
-    public Transform holdPlace; 
+    public Transform holdPlace;
+    public FailPanel failPanel;
 
-    
+
     public void CheckForMatch()
     {
        
@@ -64,6 +65,8 @@ public class MatchChecker : MonoBehaviour
         
         screwsInHoldPlace.Clear();
         screwsInHoldPlace.AddRange(currentScrews);
+
+        CheckFailCondition();
     }
 
     public void CheckAndSwapLastScrew()
@@ -128,5 +131,36 @@ public class MatchChecker : MonoBehaviour
 
         
         screwsInHoldPlace.RemoveAll(screw => screw == null); 
+    }
+
+    private void CheckFailCondition()
+    {
+        if (AreAllHolesFull() && !IsAnyMatch())
+        {
+            
+            failPanel.ShowFailPanel();
+        }
+    }
+    private bool AreAllHolesFull()
+    {
+        foreach (Transform holdPosition in holdPlace)
+        {
+            if (holdPosition.childCount == 0) 
+            {
+                return false; 
+            }
+        }
+        return true;
+    }
+    private bool IsAnyMatch()
+    {
+        foreach (var screw in screwsInHoldPlace)
+        {
+            if (screw.CompareTag("Matched")) 
+            {
+                return true; 
+            }
+        }
+        return false; 
     }
 }
