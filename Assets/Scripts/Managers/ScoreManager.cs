@@ -6,7 +6,9 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance { get; private set; } 
 
     private int score = 0;
-    [SerializeField] private TextMeshProUGUI scoreText; 
+    public int scoreToWin = 20;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private GameObject winPanel;
 
     private void Awake()
     {
@@ -26,6 +28,12 @@ public class ScoreManager : MonoBehaviour
     {
         score += amount;
         UpdateScoreText();
+
+
+        if (score >= scoreToWin)
+        {
+            ShowWinPanel();
+        }
     }
 
     private void UpdateScoreText()
@@ -33,6 +41,14 @@ public class ScoreManager : MonoBehaviour
         if (scoreText != null)
         {
             scoreText.text = "Score: " + score.ToString();
+        }
+    }
+
+    private void ShowWinPanel()
+    {
+        if (winPanel != null)
+        {
+            winPanel.SetActive(true);
         }
     }
 }

@@ -109,6 +109,11 @@ public class MatchChecker : MonoBehaviour
         }
     }
 
+    public void OnMatch()
+    {
+        ScoreManager.Instance.AddScore(10);
+    }
+
     private void ShiftScrewsToFillGaps()
     {
         int targetIndex = 0; 
