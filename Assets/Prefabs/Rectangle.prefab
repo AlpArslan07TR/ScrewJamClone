@@ -655,6 +655,7 @@ GameObject:
   - component: {fileID: 7050698903362663669}
   - component: {fileID: 777554631819500426}
   - component: {fileID: 2014357876220100851}
+  - component: {fileID: 2453977501383000629}
   m_Layer: 0
   m_Name: Rectangle
   m_TagString: Untagged
@@ -775,3 +776,25 @@ MonoBehaviour:
   - {fileID: 3633627319502900254}
   - {fileID: 464960410529484004}
   - {fileID: 919838320764034875}
+--- !u!114 &2453977501383000629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8217736056625380039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf476b3c1432db4449e3820cc4d30600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FallObject: {fileID: 8865441160152419859}
+  ObjectHoles:
+  - {fileID: 2437405346740529988}
+  - {fileID: 3374885648788077987}
+  - {fileID: 3796667588702761625}
+  - {fileID: 3633627319502900254}
+  - {fileID: 464960410529484004}
+  - {fileID: 919838320764034875}
+  dropDistance: -10
+  dropDuration: 1
