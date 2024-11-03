@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,19 +6,20 @@ using UnityEngine;
 
 public class ObjectFallController : MonoBehaviour
 {
-    public Transform FallObject;    // Rectangle GameObject'ine referans
-    public Transform[] ObjectHoles;   // Rectangle içindeki silindirlerin (hole'larýn) referanslarý
-    public float dropDistance = -10f;    // Düþme mesafesi
-    public float dropDuration = 1f;      // Düþme süresi
+    public Transform FallObject;    
+    public Transform[] ObjectHoles;   
+    public float dropDistance = -10f;    
+    public float dropDuration = 1f;      
 
-    private bool hasFallen = false;      // Rectangle'in düþüp düþmediðini kontrol eder
+    private bool hasFallen = false;      
 
     private void Update()
     {
         if (!hasFallen && AreHolesEmpty())
         {
+            StartFallSequence();
             DropObject();
-            hasFallen = true; // Bir kere düþtükten sonra tekrar düþmesin
+            hasFallen = true; 
         }
     }
 
@@ -27,14 +29,23 @@ public class ObjectFallController : MonoBehaviour
         {
             if (hole.childCount > 0)
             {
-                return false; // Eðer herhangi bir hole doluysa, düþme iþlemi baþlamasýn
+                return false; 
             }
         }
-        return true; // Tüm hole’lar boþsa düþme iþlemi baþlasýn
+        return true; 
     }
-
+    private void StartFallSequence()
+    {
+        DropObject();                       
+        DestroyAfterDelay();           
+    }
     private void DropObject()
     {
         FallObject.DOMoveZ(FallObject.position.z + dropDistance, dropDuration).SetEase(Ease.InCubic);
+    }
+    private async void DestroyAfterDelay()
+    {
+        await UniTask.Delay(5000);    
+        Destroy(FallObject.gameObject); 
     }
 }

@@ -44,7 +44,7 @@ public class MatchChecker : MonoBehaviour
        
         foreach (var group in screwGroups)
         {
-            Debug.Log($"Grup: {group.Key}, Vida Sayýsý: {group.Value.Count}"); 
+            
             if (group.Value.Count >= 3) 
             {
                 
