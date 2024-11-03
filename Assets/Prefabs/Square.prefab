@@ -441,7 +441,6 @@ GameObject:
   - component: {fileID: 3979187036163953336}
   - component: {fileID: 2527786026484955530}
   - component: {fileID: 6976153678136359423}
-  - component: {fileID: 8068833030319981329}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -562,28 +561,6 @@ MonoBehaviour:
   - {fileID: 4454409372725757471}
   - {fileID: 7150993521835749813}
   - {fileID: 3316824560395564198}
---- !u!114 &8068833030319981329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6795337016307524013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf476b3c1432db4449e3820cc4d30600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FallObject: {fileID: 4919298908402265926}
-  ObjectHoles:
-  - {fileID: 5627874228474082358}
-  - {fileID: 3222771800586935782}
-  - {fileID: 1016863145029882407}
-  - {fileID: 4454409372725757471}
-  - {fileID: 7150993521835749813}
-  - {fileID: 3316824560395564198}
-  dropDistance: -10
-  dropDuration: 1
 --- !u!1 &8498490360686411525
 GameObject:
   m_ObjectHideFlags: 0
