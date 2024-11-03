@@ -29,11 +29,13 @@ public class ScrewRandomizer : MonoBehaviour
     void PlaceScrew(GameObject screwPrefab, ref Transform[] availablePositions)
     {
         int randomIndex = Random.Range(0, availablePositions.Length);
-        Instantiate(screwPrefab, availablePositions[randomIndex].position, Quaternion.identity);
 
-        
+        GameObject newScrew = Instantiate(screwPrefab, availablePositions[randomIndex].position, Quaternion.identity);
+        newScrew.transform.SetParent(availablePositions[randomIndex], true); // Hole'un child'i olarak ekleme
+
         availablePositions = RemoveAt(availablePositions, randomIndex);
     }
+
 
     Transform[] RemoveAt(Transform[] array, int index)
     {
